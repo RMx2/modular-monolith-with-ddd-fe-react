@@ -1,8 +1,10 @@
-import { stringify } from "querystring";
-import { ApplicationSettings } from "../configuration/application-settings";
 import { AuthenticationService } from "../login/authentication/authentication-service";
 
+
+const BASE_APP_URL = process.env.API_BASE_URL;
+
 export class HttpClient {
+    
     public static async post<TResult>(resource: string, body: string) : Promise<TResult> {
         
         const headers = HttpClient.GetHeaders();
@@ -13,7 +15,7 @@ export class HttpClient {
             headers: headers
         };
 
-        var url = ApplicationSettings.API_URL + resource;
+        var url = BASE_APP_URL + resource;
 
         const response = await fetch(url, requestOptions);
         if (response.status === 200) {
@@ -34,7 +36,7 @@ export class HttpClient {
             headers: headers
         };
 
-        var url = ApplicationSettings.API_URL + resource;
+        var url = BASE_APP_URL + resource;
 
         const response = await fetch(url, requestOptions);
         if (response.status === 200) {
@@ -54,7 +56,7 @@ export class HttpClient {
             headers: headers
         };
 
-        var url = ApplicationSettings.API_URL + resource;
+        var url = BASE_APP_URL + resource;
 
         const response = await fetch(url, requestOptions);
         if (response.status === 200) {
@@ -81,7 +83,7 @@ export class HttpClient {
             headers: headers
         };
 
-        var url = ApplicationSettings.API_URL + resource;
+        var url = BASE_APP_URL + resource;
 
         const response = await fetch(url, requestOptions);
         if (response.status === 200) {
